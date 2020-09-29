@@ -16,8 +16,8 @@ var subscription: AnyCancellable?
 let timer = JSTimer(millisecondsDelay: 2000, isRepeating: true) {
   subscription = fetch("https://httpbin.org/uuid")
     .publisher
-    .flatMap { (response: JSObject) -> JSPromise<JSValue, JSError>.PromisePublisher in
-      JSPromise<JSValue, JSError>(response.json!().object!)!.publisher
+    .flatMap {
+      JSPromise<JSValue, JSError>($0.json!().object!)!.publisher
     }
     .mapError { $0 as Error }
     .map { Result<String, Error>.success($0.object!.uuid.string!) }

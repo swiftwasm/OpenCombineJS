@@ -1,0 +1,34 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "JavaScriptKit",
+        "repositoryURL": "https://github.com/swiftwasm/JavaScriptKit.git",
+        "state": {
+          "branch": null,
+          "revision": "6e84a7003071ed3e9fa7f8d8266a272a36b84608",
+          "version": "0.7.2"
+        }
+      },
+      {
+        "package": "OpenCombine",
+        "repositoryURL": "https://github.com/MaxDesiatov/OpenCombine.git",
+        "state": {
+          "branch": null,
+          "revision": "29ab27e488a1c9afef217b1435b3293d4a77b1ae",
+          "version": "0.0.1"
+        }
+      },
+      {
+        "package": "Runtime",
+        "repositoryURL": "https://github.com/MaxDesiatov/Runtime.git",
+        "state": {
+          "branch": null,
+          "revision": "a617ead8a125a97e69d6100e4d27922006e82e0a",
+          "version": "2.1.2"
+        }
+      }
+    ]
+  },
+  "version": 1
+}

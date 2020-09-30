@@ -29,7 +29,7 @@ extension JSPromise where Success: JSValueConstructible, Failure: JSError {
     private var future: Future<Success, Failure>?
 
     fileprivate init(parent: JSPromise) {
-      future = .init { resolver in
+      future = .init { [weak self] resolver in
         let then = parent.then { value -> JSValue in
           resolver(.success(value))
           return .undefined
@@ -38,7 +38,7 @@ extension JSPromise where Success: JSValueConstructible, Failure: JSError {
         then.catch {
           resolver(.failure($0))
         }
-        self.then = then
+        self?.then = then
       }
       self.parent = parent
     }

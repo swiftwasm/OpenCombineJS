@@ -15,8 +15,8 @@
 import JavaScriptKit
 import OpenCombine
 
-extension JSPromise where Success: JSValueConstructible, Failure: JSError {
-  public final class PromisePublisher: Publisher {
+public extension JSPromise where Success: ConstructibleFromJSValue, Failure: JSError {
+  final class PromisePublisher: Publisher {
     public typealias Output = Success
 
     /// Reference to a parent promise instance to prevent early deallocation
@@ -53,7 +53,7 @@ extension JSPromise where Success: JSValueConstructible, Failure: JSError {
   }
 
   /// Creates a new publisher for this `JSPromise` instance.
-  public var publisher: PromisePublisher {
+  var publisher: PromisePublisher {
     .init(parent: self)
   }
 

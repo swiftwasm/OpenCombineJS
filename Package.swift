@@ -10,13 +10,9 @@ let package = Package(
     .package(
       name: "JavaScriptKit",
       url: "https://github.com/swiftwasm/JavaScriptKit.git",
-      from: "0.7.2"
+      from: "0.8.0"
     ),
-    .package(
-      name: "OpenCombine",
-      url: "https://github.com/MaxDesiatov/OpenCombine.git",
-      from: "0.0.1"
-    ),
+    .package(url: "https://github.com/TokamakUI/OpenCombine.git", from: "0.12.0-alpha2"),
   ],
   targets: [
     .target(

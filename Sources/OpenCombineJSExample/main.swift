@@ -2,25 +2,25 @@ import JavaScriptKit
 import OpenCombine
 import OpenCombineJS
 
-private let _jsFetch = JSObject.global.fetch.function!
+private let jsFetch = JSObject.global.fetch.function!
 func fetch(_ url: String) -> JSPromise<JSObject, JSError> {
-  JSPromise(_jsFetch(url).object!)!
+  JSPromise(jsFetch(url).object!)!
 }
 
-let document = JSObject.global.document.object!
-let p = document.createElement!("p").object!
-_ = document.body.object!.appendChild!(p)
+let document = JSObject.global.document
+var p = document.createElement("p")
+_ = document.body.appendChild(p)
 
 var subscription: AnyCancellable?
 
-let timer = JSTimer(millisecondsDelay: 2000, isRepeating: true) {
+let timer = JSTimer(millisecondsDelay: 1000, isRepeating: true) {
   subscription = fetch("https://httpbin.org/uuid")
     .publisher
     .flatMap {
       JSPromise<JSValue, JSError>($0.json!().object!)!.publisher
     }
     .mapError { $0 as Error }
-    .map { Result<String, Error>.success($0.object!.uuid.string!) }
+    .map { Result<String, Error>.success($0.uuid.string!) }
     .catch { Just(.failure($0)) }
     .sink {
       let time = JSDate().toLocaleTimeString()

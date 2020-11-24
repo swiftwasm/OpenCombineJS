@@ -16,6 +16,8 @@ import JavaScriptKit
 import OpenCombine
 
 public final class JSScheduler: Scheduler {
+  public init() {}
+
   private final class CancellableTimer: Cancellable {
     let cancellation: () -> ()
 

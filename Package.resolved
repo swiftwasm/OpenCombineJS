@@ -6,8 +6,8 @@
         "repositoryURL": "https://github.com/swiftwasm/JavaScriptKit.git",
         "state": {
           "branch": null,
-          "revision": "8ba4135d5fd6a734c3771ef3fac66896bbcb0214",
-          "version": "0.8.0"
+          "revision": "b7a02434c6e973c08c3fd5069105ef44dd82b891",
+          "version": "0.9.0"
         }
       },
       {
@@ -15,17 +15,8 @@
         "repositoryURL": "https://github.com/TokamakUI/OpenCombine.git",
         "state": {
           "branch": null,
-          "revision": "bccff3e7c84bc559e1aa0aa9ca878400360d439d",
-          "version": "0.12.0-alpha2"
-        }
-      },
-      {
-        "package": "Runtime",
-        "repositoryURL": "https://github.com/MaxDesiatov/Runtime.git",
-        "state": {
-          "branch": null,
-          "revision": "a617ead8a125a97e69d6100e4d27922006e82e0a",
-          "version": "2.1.2"
+          "revision": "eea5e707b571da14fce588000046b8ec4c62018b",
+          "version": "0.12.0-alpha3"
         }
       }
     ]

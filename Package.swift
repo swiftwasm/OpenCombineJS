@@ -12,7 +12,7 @@ let package = Package(
       url: "https://github.com/swiftwasm/JavaScriptKit.git",
       from: "0.9.0"
     ),
-    .package(url: "https://github.com/TokamakUI/OpenCombine.git", .branch("observableobject-mirror")),
+    .package(url: "https://github.com/TokamakUI/OpenCombine.git", from: "0.12.0-alpha3"),
   ],
   targets: [
     .target(

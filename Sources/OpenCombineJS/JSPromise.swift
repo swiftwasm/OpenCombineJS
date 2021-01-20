@@ -15,46 +15,36 @@
 import JavaScriptKit
 import OpenCombine
 
-public extension JSPromise where Success: ConstructibleFromJSValue, Failure: JSError {
+public extension JSPromise {
   final class PromisePublisher: Publisher {
-    public typealias Output = Success
-
-    /// Reference to a parent promise instance to prevent early deallocation
-    private var parent: JSPromise?
-
-    /// Reference to a `then` success callback promise instance to prevent early deallocation
-    private var then: JSPromise<JSValue, Failure>?
+    public typealias Output = JSValue
+    public typealias Failure = JSValue
 
     /// `Future` instance that handles subscriptions to this publisher.
-    private var future: Future<Success, Failure>?
+    private var future: Future<JSValue, JSValue>
 
-    fileprivate init(parent: JSPromise) {
-      future = .init { [weak self] resolver in
-        let then = parent.then { value -> JSValue in
-          resolver(.success(value))
-          return .undefined
-        }
-
-        then.catch {
+    fileprivate init(promise: JSPromise) {
+      future = .init { resolver in
+        promise.then(success: {
+          resolver(.success($0))
+          return JSValue.undefined
+        }, failure: {
           resolver(.failure($0))
-        }
-        self?.then = then
+          return JSValue.undefined
+        })
       }
-      self.parent = parent
     }
 
     public func receive<Downstream: Subscriber>(subscriber: Downstream)
-      where Success == Downstream.Input, Failure == Downstream.Failure
+      where Downstream.Input == JSValue, Downstream.Failure == JSValue
     {
-      guard let parent = parent, let then = then, let future = future else { return }
-
-      future.receive(subscriber: WrappingSubscriber(inner: subscriber, parent: parent, then: then))
+      future.receive(subscriber: WrappingSubscriber(inner: subscriber))
     }
   }
 
   /// Creates a new publisher for this `JSPromise` instance.
   var publisher: PromisePublisher {
-    .init(parent: self)
+    .init(promise: self)
   }
 
   /** Helper type that wraps a given `inner` subscriber and holds references to both stored promises
@@ -66,8 +56,6 @@ public extension JSPromise where Success: ConstructibleFromJSValue, Failure: JSE
     typealias Failure = Inner.Failure
 
     let inner: Inner
-    let parent: JSPromise
-    let then: JSPromise<JSValue, Failure>
 
     var combineIdentifier: CombineIdentifier { inner.combineIdentifier }
 

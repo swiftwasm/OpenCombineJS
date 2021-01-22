@@ -10,7 +10,7 @@ let package = Package(
     .package(
       name: "JavaScriptKit",
       url: "https://github.com/swiftwasm/JavaScriptKit.git",
-      .branch("main")
+      from: "0.10.0"
     ),
     .package(url: "https://github.com/TokamakUI/OpenCombine.git", from: "0.12.0-alpha3"),
   ],

@@ -28,7 +28,7 @@ import OpenCombine
 import OpenCombineJS
 
 private let jsFetch = JSObject.global.fetch.function!
-func fetch(_ url: String) -> JSPromise<JSObject, JSError> {
+func fetch(_ url: String) -> JSPromise {
   JSPromise(jsFetch(url).object!)!
 }
 
@@ -42,7 +42,7 @@ let timer = JSTimer(millisecondsDelay: 1000, isRepeating: true) {
   subscription = fetch("https://httpbin.org/uuid")
     .publisher
     .flatMap {
-      JSPromise<JSValue, JSError>($0.json!().object!)!.publisher
+      JSPromise($0.json().object!)!.publisher
     }
     .mapError { $0 as Error }
     .map { Result<String, Error>.success($0.uuid.string!) }

@@ -12,11 +12,11 @@
       },
       {
         "package": "OpenCombine",
-        "repositoryURL": "https://github.com/TokamakUI/OpenCombine.git",
+        "repositoryURL": "https://github.com/OpenCombine/OpenCombine.git",
         "state": {
           "branch": null,
-          "revision": "eea5e707b571da14fce588000046b8ec4c62018b",
-          "version": "0.12.0-alpha3"
+          "revision": "28993ae57de5a4ea7e164787636cafad442d568c",
+          "version": "0.12.0"
         }
       }
     ]

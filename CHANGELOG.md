@@ -1,3 +1,7 @@
+# 0.1.1 (22 January 2021)
+
+This release uses upstream OpenCombine 0.12.0 instead of an OpenCombine fork as it did previously.
+
 # 0.1.0 (22 January 2021)
 
 This release adds compatibility with JavaScriptKit 0.10, which removes generic parameters from the

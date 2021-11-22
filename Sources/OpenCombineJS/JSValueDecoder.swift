@@ -17,6 +17,6 @@ import OpenCombine
 
 extension JSValueDecoder: TopLevelDecoder {
   public func decode<T: Decodable>(_ type: T.Type, from value: JSValue) throws -> T {
-    try decode(type, from: value)
+    try decode(type, from: value, userInfo: [:])
   }
 }

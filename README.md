@@ -11,7 +11,7 @@ APIs. Currently it provides:
   [`throttle`](<https://developer.apple.com/documentation/combine/publisher/throttle(for:scheduler:latest:)>),
   and
   [`timeout`](<https://developer.apple.com/documentation/combine/publisher/timeout(_:scheduler:options:customerror:)>)
-  in a browser environment.
+  in the browser environment.
 - A [`TopLevelDecoder`](https://developer.apple.com/documentation/combine/topleveldecoder)
   implementation on [`JSValueDecoder`](https://swiftwasm.github.io/JavaScriptKit/JSValueDecoder/).
 - A `publisher` property on [`JSPromise`](https://swiftwasm.github.io/JavaScriptKit/JSPromise/),

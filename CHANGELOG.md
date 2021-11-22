@@ -1,3 +1,11 @@
+# 0.1.2 (22 November 2021)
+
+This is a bugfix release that fixes infinite recursion in the use of `JSValueDecoder`.
+
+**Merged pull requests:**
+
+- Fix infinite recursion in `JSValueDecoder` ([#6](https://github.com/swiftwasm/OpenCombineJS/pull/6)) via [@MaxDesiatov](https://github.com/MaxDesiatov)
+
 # 0.1.1 (22 January 2021)
 
 This release uses upstream OpenCombine 0.12.0 instead of an OpenCombine fork as it did previously.

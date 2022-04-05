@@ -7,11 +7,29 @@ on:
     branches: [main]
 
 jobs:
-  linux_build:
+  linux_build_5_3:
     runs-on: ubuntu-20.04
 
     steps:
       - uses: actions/checkout@v2
       - uses: swiftwasm/swiftwasm-action@v5.3
+        with:
+          shell-action: swift build --triple wasm32-unknown-wasi
+
+  linux_build_5_4:
+    runs-on: ubuntu-20.04
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: swiftwasm/swiftwasm-action@v5.4
+        with:
+          shell-action: swift build --triple wasm32-unknown-wasi
+
+  linux_build_5_5:
+    runs-on: ubuntu-20.04
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: swiftwasm/swiftwasm-action@v5.5
         with:
           shell-action: swift build --triple wasm32-unknown-wasi

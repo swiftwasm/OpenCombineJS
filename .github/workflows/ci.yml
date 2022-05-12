@@ -33,3 +33,12 @@ jobs:
       - uses: swiftwasm/swiftwasm-action@v5.5
         with:
           shell-action: swift build --triple wasm32-unknown-wasi
+
+  linux_build_5_6:
+    runs-on: ubuntu-20.04
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: swiftwasm/swiftwasm-action@v5.6
+        with:
+          shell-action: swift build --triple wasm32-unknown-wasi
